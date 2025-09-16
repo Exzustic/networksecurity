@@ -3,7 +3,7 @@ import os, sys
 from src.exception.exception import NetworkSecurityException
 from src.logging.logger import logging
 from src.entity.artifact_entity import DataIngestionArtifact, DataValidatinArtifact
-from src.entity.config_entity import DataValidaionConfig
+from src.entity.config_entity import DataValidationConfig
 from src.constant.training_pipeline import SCHEMA_FILE_PATH
 from src.utils.main_utils.utils import read_yaml_file, write_yaml_file
 
@@ -11,11 +11,11 @@ from scipy.stats import ks_2samp
 import pandas as pd
 
 
-class DataValidaton:
+class DataValidation:
     def __init__(
         self,
         data_ingestion_artifact: DataIngestionArtifact,
-        data_validation_config: DataValidaionConfig,
+        data_validation_config: DataValidationConfig,
     ):
         try:
             self.data_ingestion_artifact = data_ingestion_artifact
@@ -76,8 +76,8 @@ class DataValidaton:
             test_file_pth = self.data_ingestion_artifact.test_file_path
 
             # read the data from train and test
-            train_dataframe = DataValidaton.read_data(train_file_path)
-            test_dataframe = DataValidaton.read_data(test_file_pth)
+            train_dataframe = DataValidation.read_data(train_file_path)
+            test_dataframe = DataValidation.read_data(test_file_pth)
 
             # validate number of columns
             status = self.validate_number_of_columns(train_dataframe)

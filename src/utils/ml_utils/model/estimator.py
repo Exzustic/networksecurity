@@ -9,9 +9,9 @@ from src.constant.training_pipeline import (
 )
 
 class NetworkModel:
-    def __init__(self, preproseccor, model):
+    def __init__(self, preprocessor, model):
         try:
-            self.preprocessor = preproseccor
+            self.preprocessor = preprocessor
             self.model = model
         except Exception as e:
             raise NetworkSecurityException(e, sys)

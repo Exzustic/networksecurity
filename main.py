@@ -1,7 +1,7 @@
 import sys
 
 from src.components.data_ingestion import DataIngestion
-from src.components.data_validation import DataValidaton
+from src.components.data_validation import DataValidation
 from src.components.data_transformation import DataTransfomation
 from src.components.model_trainer import ModelTrainer
 from src.exception.exception import NetworkSecurityException
@@ -9,7 +9,7 @@ from src.logging.logger import logging
 from src.entity.config_entity import (
     DataIngestionConfig,
     TrainingPipelineConfig,
-    DataValidaionConfig,
+    DataValidationConfig,
     DataTransformationConfig,
     ModelTrainerConfig,
 )
@@ -30,8 +30,8 @@ if __name__ == "__main__":
         logging.info("Data ingestion initiation completed")
         print(data_ingestion_artifact)
 
-        data_validation_config = DataValidaionConfig(training_pipeline_config)
-        data_validation = DataValidaton(data_ingestion_artifact, data_validation_config)
+        data_validation_config = DataValidationConfig(training_pipeline_config)
+        data_validation = DataValidation(data_ingestion_artifact, data_validation_config)
         logging.info("Initiate the data validation")
         data_validation_artifact = data_validation.initiate_data_validation()
         logging.info("Data validation initiation completed")
